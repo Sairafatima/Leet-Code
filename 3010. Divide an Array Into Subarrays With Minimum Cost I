@@ -1,0 +1,29 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minimumCost = function (nums) {
+  const minValuesIndex = [];
+  for (let i = 0; i < nums.length; i++) {
+    if (minValuesIndex.length < 3) {
+      minValuesIndex.push(nums[i]);
+    } else {
+      let last = minValuesIndex[2];
+      let secondLast = minValuesIndex.at(-2);
+
+      if (nums[i] < last || nums[i] < secondLast) {
+        if (last < secondLast) {
+          minValuesIndex[1] = last;
+          minValuesIndex[2] = nums[i];
+        } else {
+          minValuesIndex[2] = nums[i];
+        }
+      }
+    }
+  }
+  var sum = 0;
+  for (let i = 0; i < minValuesIndex.length; i++) {
+    sum += minValuesIndex[i];
+  }
+  return sum;
+};
