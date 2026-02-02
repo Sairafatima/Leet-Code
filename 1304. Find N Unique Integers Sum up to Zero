@@ -1,0 +1,17 @@
+/**
+ * @param {number} n
+ * @return {number[]}
+ */
+var sumZero = function (n) {
+  var arr = [];
+  var int = 1;
+  while (arr.length < n - 1) {
+    arr.push(-int);
+    arr.push(int);
+    int += 1;
+  }
+  if (arr.length < n) {
+    arr.push(0);
+  }
+  return arr;
+};
